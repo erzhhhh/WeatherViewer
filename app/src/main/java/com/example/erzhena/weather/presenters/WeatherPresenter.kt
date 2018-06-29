@@ -14,7 +14,7 @@ class WeatherPresenter(private val weatherService: WeatherService) :
     override fun load() {
         weatherService.getWeather()
             .flatMap { list->
-                Observable.just(list.list.asList())
+                Observable.just(list.locations)
             }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

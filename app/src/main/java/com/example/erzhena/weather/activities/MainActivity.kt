@@ -7,7 +7,7 @@ import com.example.erzhena.weather.App
 import com.example.erzhena.weather.R
 import com.example.erzhena.weather.adapters.WeatherAdapter
 import com.example.erzhena.weather.contracts.WeatherContract
-import com.example.erzhena.weather.models.WeatherList
+import com.example.erzhena.weather.models.Location
 import kotlinx.android.synthetic.main.activity_main.recyclerView
 import javax.inject.Inject
 
@@ -37,8 +37,8 @@ open class MainActivity :
         presenter.load()
     }
 
-    override fun showContent(weather : List<WeatherList>) {
-        adapter.setItems(weather)
+    override fun showContent(location : List<Location>) {
+        adapter.setItems(location)
     }
 
     override fun showError() {
