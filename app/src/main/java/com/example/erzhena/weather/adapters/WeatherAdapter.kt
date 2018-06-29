@@ -41,14 +41,19 @@ class WeatherAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             with(itemView) {
                 setOnClickListener { listener?.invoke(pm) }
                 weather_description.text = pm.weather[0].description
-                temperature.text = Math.round(pm.main.temp/10).toString()
+                temperature.text = "${Math.round(pm.main.temp / 10)}\u00b0"
                 city.text = pm.name
                 when {
-                    pm.weather[0].id == 800 -> weather_icon.setImageResource(R.drawable.art_clear)
-                    pm.weather[0].id == 900 -> weather_icon.setImageResource(R.drawable.art_clouds)
-                    pm.weather[0].id == 700 -> weather_icon.setImageResource(R.drawable.art_fog)
+                    pm.weather[0].icon == "01d" || pm.weather[0].icon == "01n" -> weather_icon.setImageResource(R.drawable.art_clear)
+                    pm.weather[0].icon == "02d" || pm.weather[0].icon == "02n" -> weather_icon.setImageResource(R.drawable.art_light_clouds)
+                    pm.weather[0].icon == "03d" || pm.weather[0].icon == "03n" -> weather_icon.setImageResource(R.drawable.art_light_clouds)
+                    pm.weather[0].icon == "04d" || pm.weather[0].icon == "04n" -> weather_icon.setImageResource(R.drawable.art_clouds)
+                    pm.weather[0].icon == "09d" || pm.weather[0].icon == "09n" -> weather_icon.setImageResource(R.drawable.art_rain)
+                    pm.weather[0].icon == "10d" || pm.weather[0].icon == "10n" -> weather_icon.setImageResource(R.drawable.art_light_rain)
+                    pm.weather[0].icon == "11d" || pm.weather[0].icon == "11n" -> weather_icon.setImageResource(R.drawable.art_storm)
+                    pm.weather[0].icon == "13d" || pm.weather[0].icon == "13n" -> weather_icon.setImageResource(R.drawable.art_snow)
+                    pm.weather[0].icon == "50d" || pm.weather[0].icon == "50n" -> weather_icon.setImageResource(R.drawable.art_fog)
                 }
-
             }
         }
     }
