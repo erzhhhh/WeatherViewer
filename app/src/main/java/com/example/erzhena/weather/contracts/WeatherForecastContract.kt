@@ -2,19 +2,19 @@ package com.example.erzhena.weather.contracts
 
 import com.example.erzhena.weather.base.presenters.MvpPresenter
 import com.example.erzhena.weather.base.view.MvpView
-import com.example.erzhena.weather.models.Location
+import com.example.erzhena.weather.models.ForecastItem
 
-interface WeatherContract {
+interface WeatherForecastContract {
 
     interface View : MvpView {
 
-        fun showContent(location : List<Location>)
+        fun showContent(forecast : List<ForecastItem>)
 
         fun showError()
     }
 
     interface Presenter : MvpPresenter<View> {
 
-        fun loadWeather()
+        fun loadForecast(cityId: String)
     }
 }

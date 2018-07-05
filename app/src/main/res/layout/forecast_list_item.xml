@@ -22,7 +22,7 @@
         tools:src="@drawable/art_clouds" />
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/forecastDate"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/list_item_date_left_margin"
         android:layout_marginStart="@dimen/list_item_date_start_margin"
@@ -33,12 +33,12 @@
         tools:text="Today, April 03" />
 
     <TextView
-        android:id="@+id/weather_description"
+        android:id="@+id/forecast_weather_description"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/secondary_text"
-        app:layout_constraintLeft_toLeftOf="@+id/date"
+        app:layout_constraintLeft_toLeftOf="@+id/forecastDate"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         tools:text="Rainy" />
 

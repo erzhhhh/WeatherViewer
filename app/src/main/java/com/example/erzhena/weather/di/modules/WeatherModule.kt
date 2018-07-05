@@ -2,6 +2,8 @@ package com.example.erzhena.weather.di.modules
 
 import com.example.erzhena.weather.api.WeatherService
 import com.example.erzhena.weather.contracts.WeatherContract
+import com.example.erzhena.weather.contracts.WeatherForecastContract
+import com.example.erzhena.weather.presenters.WeatherForecastPresenter
 import com.example.erzhena.weather.presenters.WeatherPresenter
 import dagger.Module
 import dagger.Provides
@@ -19,4 +21,7 @@ class WeatherModule {
 
     @Provides
     fun provideWeatherPresenter(service: WeatherService): WeatherContract.Presenter = WeatherPresenter(service)
+
+    @Provides
+    fun provideWeatherForecastPresenter(service: WeatherService): WeatherForecastContract.Presenter = WeatherForecastPresenter(service)
 }

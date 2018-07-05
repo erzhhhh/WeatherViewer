@@ -2,7 +2,9 @@ package com.example.erzhena.weather.di.components
 
 import android.content.Context
 import com.example.erzhena.weather.activities.MainActivity
+import com.example.erzhena.weather.activities.WeatherForecastActivity
 import com.example.erzhena.weather.api.WeatherService
+import com.example.erzhena.weather.base.BaseActivity
 import com.example.erzhena.weather.di.modules.AppModule
 import com.example.erzhena.weather.presenters.WeatherPresenter
 import dagger.Component
@@ -22,7 +24,11 @@ interface AppComponent {
 
     fun injects(target: MainActivity)
 
+    fun injects(target: WeatherForecastActivity)
+
     fun injects(target: WeatherPresenter)
 
     fun injects(target: WeatherService)
+
+    fun injects(target: BaseActivity)
 }

@@ -8,6 +8,7 @@ data class Response(
 )
 
 data class Location(
+    val id: Int,
     val name: String,
     val main: Main,
     val weather: List<Weather>

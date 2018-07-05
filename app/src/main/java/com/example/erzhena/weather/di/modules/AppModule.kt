@@ -1,14 +1,14 @@
 package com.example.erzhena.weather.di.modules
 
 import android.content.Context
+import android.util.Log
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module(includes = [
@@ -25,21 +25,9 @@ open class AppModule(private val context: Context, private val baseUrl: String) 
 
     @Singleton
     @Provides
-    @Named("ok-1")
-    fun provideOkHttpClient1(): OkHttpClient {
+    fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
-            .connectTimeout(20, TimeUnit.SECONDS)
-            .readTimeout(20, TimeUnit.SECONDS)
-            .build()
-    }
-
-    @Singleton
-    @Provides
-    @Named("ok-2")
-    fun provideOkHttpClient2(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .readTimeout(60, TimeUnit.SECONDS)
+            .addInterceptor(interceptor)
             .build()
     }
 
@@ -51,7 +39,7 @@ open class AppModule(private val context: Context, private val baseUrl: String) 
 
     @Singleton
     @Provides
-    fun provideRetrofit(@Named("ok-1") client: OkHttpClient, converterFactory: GsonConverterFactory, adapterFactory: RxJava2CallAdapterFactory): Retrofit {
+    fun provideRetrofit(client: OkHttpClient, converterFactory: GsonConverterFactory, adapterFactory: RxJava2CallAdapterFactory): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(converterFactory)
@@ -59,6 +47,17 @@ open class AppModule(private val context: Context, private val baseUrl: String) 
             .client(client)
             .build()
     }
+
+    @Singleton
+    @Provides
+    fun provideHTTPLoggingInterceptor() : HttpLoggingInterceptor {
+        val interceptor = HttpLoggingInterceptor{
+            msg -> Log.d("okhttp",msg)
+        }
+        interceptor.level = HttpLoggingInterceptor.Level.HEADERS
+        return interceptor
+    }
+
 
     @Provides
     @Singleton
