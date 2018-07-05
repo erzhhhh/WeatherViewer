@@ -33,6 +33,7 @@ open class MainActivity :
             val intent = Intent(this@MainActivity, WeatherForecastActivity::class.java)
                 .putExtra("CITYID", it.id.toString())
                 .putExtra("CITYNAME", it.name)
+                .putExtra("CURRENT_WEATHER", it.weather[0].icon)
             startActivity(intent)
         }
         recyclerView.adapter = adapter
