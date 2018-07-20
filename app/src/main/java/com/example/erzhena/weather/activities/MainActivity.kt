@@ -7,6 +7,9 @@ import com.example.erzhena.weather.App
 import com.example.erzhena.weather.R
 import com.example.erzhena.weather.adapters.WeatherAdapter
 import com.example.erzhena.weather.base.BaseActivity
+import com.example.erzhena.weather.base.constants.Constants.CITY_ID
+import com.example.erzhena.weather.base.constants.Constants.CITY_NAME
+import com.example.erzhena.weather.base.constants.Constants.CURRENT_WEATHER
 import com.example.erzhena.weather.contracts.WeatherContract
 import com.example.erzhena.weather.models.Location
 import kotlinx.android.synthetic.main.activity_main.recyclerView
@@ -31,9 +34,9 @@ open class MainActivity :
         adapter = WeatherAdapter()
         adapter.onItemClickListener = {
             val intent = Intent(this@MainActivity, WeatherForecastActivity::class.java)
-                .putExtra("CITYID", it.id.toString())
-                .putExtra("CITYNAME", it.name)
-                .putExtra("CURRENT_WEATHER", it.weather[0].icon)
+                .putExtra(CITY_ID, it.id.toString())
+                .putExtra(CITY_NAME, it.name)
+                .putExtra(CURRENT_WEATHER, it.weather[0].icon)
             startActivity(intent)
         }
         recyclerView.adapter = adapter
