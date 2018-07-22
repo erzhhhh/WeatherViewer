@@ -8,10 +8,10 @@ import com.example.erzhena.weather.R
 import com.example.erzhena.weather.getCurrentIcon
 import com.example.erzhena.weather.models.ForecastItem
 import kotlinx.android.synthetic.main.forecast_list_item.view.forecastDate
-import kotlinx.android.synthetic.main.forecast_list_item.view.forecast_weather_description
-import kotlinx.android.synthetic.main.forecast_list_item.view.low_temperature
-import kotlinx.android.synthetic.main.weather_item.view.high_temperature
-import kotlinx.android.synthetic.main.weather_item.view.weather_icon
+import kotlinx.android.synthetic.main.forecast_list_item.view.forecastWeatherDescription
+import kotlinx.android.synthetic.main.forecast_list_item.view.lowTemperature
+import kotlinx.android.synthetic.main.weather_item.view.highTemperature
+import kotlinx.android.synthetic.main.weather_item.view.weatherIcon
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -43,11 +43,11 @@ class WeatherForecastAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(pm: ForecastItem) {
             with(itemView) {
-                high_temperature.text = "${Math.round(pm.main.temp_max / 10)}\u00b0"
-                low_temperature.text = "${Math.round(pm.main.temp_min / 10)}\u00b0"
+                highTemperature.text = "${Math.round(pm.main.temp_max / 10)}\u00b0"
+                lowTemperature.text = "${Math.round(pm.main.temp_min / 10)}\u00b0"
                 forecastDate.text = getDateTime(pm.dt)
-                forecast_weather_description.text = pm.weather[0].description
-                weather_icon.setImageResource(getCurrentIcon(pm.weather[0].icon))
+                forecastWeatherDescription.text = pm.weather[0].description
+                weatherIcon.setImageResource(getCurrentIcon(pm.weather[0].icon))
             }
         }
 

@@ -7,9 +7,9 @@ import com.example.erzhena.weather.R
 import com.example.erzhena.weather.getCurrentIcon
 import com.example.erzhena.weather.models.Location
 import kotlinx.android.synthetic.main.weather_item.view.date
-import kotlinx.android.synthetic.main.weather_item.view.high_temperature
-import kotlinx.android.synthetic.main.weather_item.view.weather_description
-import kotlinx.android.synthetic.main.weather_item.view.weather_icon
+import kotlinx.android.synthetic.main.weather_item.view.highTemperature
+import kotlinx.android.synthetic.main.weather_item.view.weatherDescription
+import kotlinx.android.synthetic.main.weather_item.view.weatherIcon
 
 
 class WeatherAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -41,10 +41,10 @@ class WeatherAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(pm: Location, listener: ((Location) -> Unit)?) {
             with(itemView) {
                 setOnClickListener { listener?.invoke(pm) }
-                weather_description.text = pm.weather.first().description
-                high_temperature.text = "${Math.round(pm.main.temp_max / 10)}\u00b0"
+                weatherDescription.text = pm.weather.first().description
+                highTemperature.text = "${Math.round(pm.main.temp_max / 10)}\u00b0"
                 date.text = pm.name
-                weather_icon.setImageResource(getCurrentIcon(pm.weather[0].icon))
+                weatherIcon.setImageResource(getCurrentIcon(pm.weather[0].icon))
             }
         }
     }
