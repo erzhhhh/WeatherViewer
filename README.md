@@ -33,8 +33,6 @@ This project was created as a learning exercise to practice REST API calls, JSON
 - **JSON parsing**  
 - **Gradle** build system
 
-> If the app later moves to Retrofit, Room, or Compose — update this section to reflect it.
-
 ---
 
 ## Getting started
