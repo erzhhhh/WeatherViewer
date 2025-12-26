@@ -35,27 +35,6 @@ This project was created as a learning exercise to practice REST API calls, JSON
 
 ---
 
-## Getting started
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/erzhhhh/WeatherViewer.git
-   cd WeatherViewer
-   ```
-
-2. **Open the project in Android Studio**
-
-3. **Get an API key** from a weather provider (for example: OpenWeatherMap)
-
-4. **Add the key** into configuration (e.g., `local.properties` or directly in code):
-   ```properties
-   WEATHER_API_KEY=YOUR_API_KEY
-   ```
-
-5. **Build and run** on an emulator or device.
-
----
-
 ## Project structure
 
 ```
